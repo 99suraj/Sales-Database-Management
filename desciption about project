@@ -1,0 +1,52 @@
+SOURCE database/sample_data.sql;
+
+# Run Analytical Queries
+SOURCE database/queries.sql;
+
+
+***********************************************
+
+Example Reports
+✔ Total sales on a specific date
+SELECT SUM(total_amount) AS total_sales
+FROM sales
+WHERE sale_date = '2025-01-15';
+
+✔ Top 5 selling products
+SELECT p.product_name, SUM(s.quantity) AS total_quantity
+FROM sales s
+JOIN products p ON s.product_id = p.product_id
+GROUP BY p.product_name
+ORDER BY total_quantity DESC
+LIMIT 5;
+
+**********************************************
+
+🧩 ER Diagram (Optional)
+
+Add an ER diagram in the /images folder.
+
+🧪 Technologies Used
+
+SQL (MySQL / MariaDB / PostgreSQL)
+
+Database Normalization (1NF, 2NF, 3NF)
+
+Git / GitHub
+
+
+
+*****************************************
+
+📁 Project Structure
+sales-database-management/
+│
+├── README.md
+│
+├── database/
+│   ├── sales_schema.sql
+│   ├── sample_data.sql
+│   └── queries.sql
+│
+└── images/
+    └── sales_er_diagram.png   (optional)
